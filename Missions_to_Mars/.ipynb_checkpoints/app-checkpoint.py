@@ -2,9 +2,8 @@
 
 # import necessary libraries
 from flask import Flask, render_template,redirect
-#import scrape_mars
+import mars
 import pymongo
-import scrape_mars
 
 
 
@@ -17,35 +16,34 @@ db = client.Mars_db
 collection = db.items
 
 
-
 # create instance of Flask app
 app = Flask(__name__)
-
+mongo=pymongo(app)
 
 
 # create route that renders index.html template
 @app.route("/")
-def index():
-    mars = list(collection.find())
-    print(type(mars[-1]))
-    print(mars[-1])
-    return render_template("index.html", mars=mars[-1])
+def Mars():
      
-
-#create route that does the scrape and stored the returned value in Mongodb    
+    return "Hello"
+    
 @app.route("/scrape")
 def scrape():
-    data=scrape_mars.scrape()
-    collection.insert_one(data)
-    # mars.update({},data,upsert=True)
+    dict=mongo.db.dict
+    data=mars.scrape()
+    dict.update({},data,upsert=True)
     return redirect("/",code=302)
-
-@app.route("/Mars_hemispheres")
-def hemispheres():
-    mars =list(collection.find())
-    return render_template("index1.html",mars=mars[-1])
+    
     
 
-   
+
+    #  # write a statement that finds all the items in the db and sets it to a variable
+    # mars_info= list(collection.find())
+    # print(mars_info)
+
+    # # render an index.html template and pass it the data you retrieved from the database
+    # return render_template("index.html", mars_info=mars_info)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
