@@ -16,7 +16,7 @@
             <h2>Mars Hemispherical Images</h2>
             {% for hemisphere in mars.Hemisphere_image_urls %}
             <div class="col-lg-6">
-            <img src="{{mars.img_url}}" class="img-thumbnail" class="rounded" alt="{{mars.title}}">
+            <img src="{{hemisphere.img_url}}" class="img-thumbnail" class="rounded" alt="{{hemisphere.title}}">
             {{mars.title}}
             {% endfor %}
             

@@ -52,11 +52,10 @@ def scrape():
     Mars=df[0]
      # Rename columns.
     Mars.columns = ['Description', 'Data']
-    # Mars.set_index('Description',inplace=True)
-    # print(Mars)
-                # then converted to html table string variable 'html'and cleaned to final_html to be used later.
-    final_html=Mars.replace('\n','')
-    html=final_html.to_html(index=False).replace('\n','')
+    
+    # then converted to html table string variable 'html'and cleaned to final_html to be used later.
+    Mars.to_html("table.html")
+    html=Mars.to_html(index=False)
 
 
     image={}

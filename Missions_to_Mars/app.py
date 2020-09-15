@@ -40,10 +40,7 @@ def scrape():
     # mars.update({},data,upsert=True)
     return redirect("/",code=302)
 
-@app.route("/Mars_hemispheres")
-def hemispheres():
-    mars =list(collection.find())
-    return render_template("index1.html",mars=mars[-1])
+
     
 
    
