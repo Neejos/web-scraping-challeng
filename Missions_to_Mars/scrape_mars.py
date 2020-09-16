@@ -34,16 +34,7 @@ def scrape():
     driver.get("https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars")
     url=driver.find_element_by_class_name("carousel_item").get_attribute("style")
     featured_image_url=url.replace('background-image: url("/','https://www.jpl.nasa.gov/').replace('");','')
-# featured_image_url
-# url
-# driver.find_element_by_id("full_image").click()
 
-
-
-#             #image url is saved in a variable
-# o=driver.find_element_by_xpath("/html/body/div[3]/div/div[1]/a[3]").click
-
-#     print(Featured_image_url)
 
     # Step 3:extract the table element from the below url
         #  by using read_html pandas function and assign the table theat u need to the  variable Mars
@@ -83,7 +74,7 @@ def scrape():
         
     return scrape_mars
 
-#scrape()
+#option to define the load function in the py file
 # def load():
      
 #     # Initialize PyMongo to work with MongoDBs
